@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Seguro 2FA</title>
+</head>
+<body>
+
+  <!-- FORMULARIO DE INICIO DE SESIÓN - PASO 1 -->
+  <div id="login-step1-container">
+    <h2>Iniciar Sesión</h2>
+    <form id="form-login-step1">
+      <input 
+        type="text" 
+        id="login-email" 
+        placeholder="Correo electrónico (ej: usuario@gmail.com)" 
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
+        title="El correo debe terminar obligatoriamente en .com"
+        required 
+      />
+      <input type="password" id="login-password" placeholder="Contraseña" required />
+      <button type="submit">Continuar</button>
+    </form>
+  </div>
+
+  <!-- FORMULARIO 2FA - PASO 2 (Oculto al inicio) -->
+  <div id="login-step2-container" style="display: none;">
+    <h2>Verificación de Seguridad (2FA)</h2>
+    <p>Ingresa el código de 6 dígitos de tu aplicación autenticadora.</p>
+    <form id="form-login-step2">
+      <input type="text" id="totp-token" placeholder="123456" maxlength="6" required />
+      <button type="submit">Verificar Código</button>
+    </form>
+  </div>
+
+  <!-- FORMULARIO DE REGISTRO -->
+  <div id="register-container" style="margin-top: 40px;">
+    <h2>Registrarse</h2>
+    <form id="form-register">
+      <input 
+        type="text" 
+        id="reg-email" 
+        placeholder="Correo electrónico (ej: usuario@gmail.com)" 
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
+        title="El correo debe terminar obligatoriamente en .com"
+        required 
+      />
+      <input type="password" id="reg-password" placeholder="Contraseña" required />
+      <button type="submit">Registrar Cuenta</button>
+    </form>
+    <div id="qr-info" style="display: none;">
+      <p>Guarda este código en tu app de Autenticador (ej. Google Authenticator):</p>
+      <p><strong id="secret-key"></strong></p>
+    </div>
+  </div>
+
+  <!-- Enlace al archivo de JavaScript separado -->
+  <script src="app.js"></script>
+</body>
+</html>
